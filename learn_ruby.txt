@@ -1,0 +1,48 @@
+ruby -e 'ruby execute single command'
+	ex: 
+	$>ruby -e 'print 123'
+	$ 123
+
+ruby filename.rb	-- will execute everything in ruby file
+
+$> irb			-- interactive Ruby Shell
+Variables:
+	Global   $variable
+	Class    @@variable
+	Instance @variable
+	Local    variable
+	Block    variable
+
+Integer:
+	$> 1235.class
+	>> Fixnum
+	$> 123456789123456789.class
+	>> Bignum
+
+Float:
+	$> 12345.6789.class
+	>> Float
+
+String:
+	$> greeting = "hello"
+	$> target = 'world'
+	$> "this is #{greeting} #{target}"
+	>> "this is hello world"
+	
+	$> target.uppercase.inserse.length
+
+Array:
+	$> my_array = []
+	$> my_array = ["a", "b", "c"]
+	$> my_array << "d"
+
+	$> my_array[3]
+	>> "d"
+	$> my_array[4]
+	>> nil
+
+	$> array2 = [1, "2", 3.0, ["a", "b"], "dog"]
+
+	$> x = "1,2,3,4,5"
+	$> x.split(',')
+	>> ["1", "2", "3", "4", "5"]
