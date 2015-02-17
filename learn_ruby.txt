@@ -46,3 +46,129 @@ Array:
 	$> x = "1,2,3,4,5"
 	$> x.split(',')
 	>> ["1", "2", "3", "4", "5"]
+
+Hash:
+	$> person = {}
+	$> person = {'name' => 'erka', 'gender'=>'male'}
+	$> person['name']
+	>> "erka"
+
+	$> person.indx("erka")
+	>> "name"
+
+	$> mixed = {1=>['a', 'b', 'c'], "hello"=> 'world', [10, 20]=>"top"}
+	$> mixed[[10, 20]]
+	>> 'top'
+	$> mixed.keys
+	>> [[10,20], 1, "hello"]
+	$> mixed.values
+	>> as you would expected.
+	
+	$> mixed.to_a
+	>> [[[10, 20], 'top'], [1, ['a','b', 'c']], ['hello', 'world']]
+	
+Symbols:
+	Symbol is just a label, therefore; one time stored and reused.
+	$> :test
+	>> :test
+	
+	$> hash = {:first_name=>"erka", :gender=>"male"}
+	here symbol :first_name is created only once and reused.
+
+Range:
+	Two types of ranges:
+	inclusive 1..10
+		1 2 3 4 5 6 7 8 9 10
+	exclusive range 1...10
+		1 2 3 4 5 6 7 8 9
+
+	$> x = 1..10
+	$> x.class
+	>> Range
+
+	$> (1..10).class
+	>> Range
+
+	//////////////////////////// SPLAT! /////////////////////////
+	$> z = [*x]
+	>> [1,2,3,4,5,6,7,8, 9, 10]
+	$> y='a'..'c'
+	>> d=[*y]
+	>> ['a','b','c']
+
+Conditionals:
+	if <Boolean>
+	  <operator>
+	elsif <Boolean>
+	  <operator>
+	else
+	  <operator>
+	end
+
+	// one lin shorthand
+	<operator> if <Boolean>
+
+	unless <Boolean>
+	  <operator>
+	end
+
+	case <variable>
+	when <value>, <value> 
+	  <operator>
+	when <value>, <value> 
+	  <operator>
+	when <value>, <value> 
+	  <operator>
+	else
+	  <operator>
+	end
+
+	///////////////////// OR/OR-EQUALS
+	meaning x=y if y exists or x=z
+	$> x = y || z
+
+	unless x
+	  x=z
+	end
+	//this can be rewritten
+	x||=z
+
+Loops:
+	loop do
+	  ...
+	end
+
+	There are 4 control in loops
+	break, next, redo, retry
+	
+	break is as we know
+	next is like continue
+	redo will redo the loop body again
+	retry will start the loop all the way to beginning
+
+	while <Boolean>
+	  ...
+	end
+
+	unless <Boolean>
+	  ...
+	end
+
+Iterator:
+	5.times do
+	  puts "Hello"
+	end
+
+	1.upto(5)	{puts "hello"}
+	5.downto(1)	{puts "hello"}
+	(1..5).each	{puts "hello"}
+	
+	fruits = ['banana', 'apple', 'orange']
+	
+	fruits.each do |fruit|
+	  puts fruit
+	end
+
+	for fruit in fruits
+	  puts fruit
+	end
