@@ -6,6 +6,11 @@ ruby -e 'ruby execute single command'
 ruby filename.rb	-- will execute everything in ruby file
 
 $> irb			-- interactive Ruby Shell
+
+	in irb we can load file like:
+	$> require "filename.rb"
+	$> true
+
 Variables:
 	Global   $variable
 	Class    @@variable
@@ -240,8 +245,7 @@ Collect:
 	array.collect{|i| i+1}
 	[2,3,4,5,6]
 
-	['apple', 'banana', 'orange'].map {|fruit| fruit.capitalize if
-fruit=='banana'}
+	['apple', 'banana', 'orange'].map {|fruit| fruit.capitalize if fruit=='banana'}
 	[nil, "Banana", nil]
 
 	['apple', 'banana', 'orange'].map {|fruit| puts fruit.capitalize }
@@ -251,3 +255,73 @@ fruit=='banana'}
 	$> [nil, nil, nil]
 
 	//with this complication, why use collect/map?
+
+Sort:
+	<=> returns
+	  -1 for less than
+	  0  for equal
+	  1  for greater than
+	
+	$> 1 <=> 2
+	$> -1    -- meaning RHS is less than
+
+	$> array = [3,1,5,2,4]
+	$> array.sort {|v1, v2|, v1 <=> v2 }    -- which is also default
+	$> [1,2,3,4,5]
+
+	$> array.sort.reverse
+
+
+	fruits = ['apple', 'bananass', 'orange']
+	fruits.sort{|fr1, fr2| fr1.length <=> fr2.length}
+	['bananass', 'orange', 'apple']
+	
+	sort!
+	// notice here fruit value is changed with exclamation mark.
+
+Inject:
+	// this is an Accumulator or "memo" as they say
+
+	$> (1..10).inject{|memo, n| memo +n}
+	this is like:
+		memo = 1
+		memo = memo + 2
+		memo = memo + 3
+		memo = memo + 4
+		...
+
+	$> array = [*1..10]
+	$> array.inject(100) {|memo, n| memo+n}     -- 100 initializes the memo
+
+////////////////////////////////////////////////////////////////////////////
+Defining methods
+
+	def welcome
+	  welcome = 5
+	  puts "Hello World"
+	end
+
+	$> welcome
+	$> "Hello World"    -- notice that variable name is similar to method name
+
+Method argument with default value
+
+	def add n1, n2
+	  puts n1 + n2
+	end
+	$> add 1        -- gives an argument missing error
+
+	def add n1=0, n2=0
+	  puts n1 + n2
+	end
+	$> add 3        -- gives an argument missing error
+	$> 3
+
+	// return multiple value with an array:
+	def add_and_sub n1, n2
+	  add = n1+n2
+	  sub = n1-n2
+
+	  return add, sub    -- or [add, sub]
+	end
+	$> add, sub = add_and_sub(7, 1)
