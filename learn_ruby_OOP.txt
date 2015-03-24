@@ -127,16 +127,111 @@ Enumerable as a mixin:
     end
   end
     
+Input/Output
+  
+  # gets will get user input followed by \n at the end
+  $> input = gets
+  $$   hello
+  $> "hello\n"
+  
+  # chomp will remove \n (\n, \r, \r\n)
+  $> input.chomp
+  $> "hello"
+
+Open file:
+  # filepaht separator differs from platform to platform
+  # meaning linux, max uses '/', while windows uses '\'
+  # ruby always uses '/'.
+  
+  # Also one can generate filepath with File.join function like:
+  $> File.join("some", "folder", "path", "filename.rb")
+  
+  # file permission is another issui that differs from platform to platform
+  # luckyly, chmod, chown (linux commands) also exists in ruby  
+  
+File Path:
+  # Absolute path: /path/to/file
+  # Relative path: ../../path/to/file
+
+  # Ruby provides us with
+  __FILE__		-- file that we are in ex: hello_world.rb
+  absolute_path     = File.expand_path(__FILE__)
+  current_directory = File.dirname(__FILE__)		-- not absolute path but relative
+
+  # create absolute path:
+  abs_path = File.join('', 'Users', 'something', 'something_else')         --notice the first string is empty string which is equivalent to root '/'.
     
+Acessing to file:
+  # file edit mode:
+    'r' read only
+    'w' write and if file exists TRUNCATE IT!
+    'a' append
+    'r+' read & write only
+    'w+' read & write and if file exists TRUNCATE IT!
+    'a+' append
+  # creates if file does not exists
+  file = File.new('file.txt', 'w')
+  
+  # another way to edit file is use open:
+  File.open("file.txt", "")
+
+  # always close
+  file.close
+
+  # writes to buffer
+  file.puts "abcd"
+  file.print "efgk"
+  file.write "1234"
+  file << "5678"
+  
+  # when we close to flash the buffer
+  file.close
     
+  # read file:
+  file.gets     -- get line with line return
+  file.read(3)  -- read 3 character 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  # looping:
+  # this will automatically closes the file.
+
+  File.open('test.txt', 'r') do |file|
+    while line = file.gets
+      puts "**" + line.chomp.reverse + "**"
+    end
+  end
+
+File Pointer:
+  # pointer in file to navigate through
+  file = File.new('test.txt', 'r+')
+  file.pos
+  $> 0
+
+  file.read(3)
+  file.pos
+  $> 3
+
+  file.gets
+  file.pos = 0
+  file.eof
+  $> true/false
+  
+  # will return beginning of file & linenumber
+  file.rewind
+
+  file.lineno    -- will return line number (not reliable)
+
+Rename and Delete files:
+  file = File.new('file_to_rename.txt', 'w')
+  file << "this is test to rename and delete"
+  file.close
+
+  File.rename('file_tor_rename.txt', 'file_to_delete.txt')
+  File.delete('file_to_delete.txt')
+
+  # copy file we need to load 'fileutils'
+  $> require 'fileutils'
+  $> FileUtils.copy('file_to_copy.txt', 'copied_file.txt')
+  
+  # FileUtils have:
+  cp, copy, mv, move, rm, remove
+  chmod, cd, chown, pwd, ln, touch, mkdir, rmdir
