@@ -72,3 +72,11 @@ Increase Complexity
 
   - Troubleshooting is difficult.
     
+Virtualization of the Desktop
+  - problems with desktop is:
+    - maintaining and troubleshooting desktop is tidious
+    - hardware upgrading is difficult
+  - Introducing Virtual Desktop Infrastructure (VDI)
+    - Central server pushs VM to each user
+    - Processing typically occurs remotely
+
