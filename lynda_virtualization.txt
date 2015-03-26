@@ -80,3 +80,25 @@ Virtualization of the Desktop
     - Central server pushs VM to each user
     - Processing typically occurs remotely
 
+Designing private cloud needs to consern:
+  - Storage
+    - filesystme type
+    - Quantity
+    - Quality (to avoid bottle neck)
+  - Bandwidth
+    - Local
+    - Remote bandwith
+       live migration from one to another
+  - Uptime goal
+    - 100% uptime is not possible
+    - number of hosts (might need to be rebooted)
+  - Monitoring
+  - Scalability
+
+Public cloud
+Amazon Web Service (AWS)
+Microsoft Asure are public cloud
+Rackspace -- OpenCloud
+CenturyLink - Qwest and Savvis
+Salesfoce.com CRM solution
+Verizon Terremark - Oracle
